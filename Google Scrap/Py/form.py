@@ -35,7 +35,8 @@ class GoogleMaps:
         # driver.get(web_url)
         
 
-    def input_fields(self,  **kwargs):
+    def input_fields(self, **kwargs):
+
         self.Driver.find_element(By.ID, "searchboxinput").send_keys(kwargs.get("find"))
         time.sleep(3)
 
