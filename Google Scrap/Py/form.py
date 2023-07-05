@@ -45,7 +45,7 @@ class GoogleMaps:
         time.sleep(3)
 
     def scroll(self):
-        for r in range(1, 5):
+        for r in range(1, 30):
             print(r)
             self.Driver.find_element(By.CLASS_NAME, "hfpxzc").send_keys(Keys.PAGE_DOWN)
             time.sleep(2)
@@ -65,7 +65,7 @@ class GoogleMaps:
         self.save_excel(title=self.Title + " in " + self.Location  +" data ")
 
     def save_excel(self,**kwargs):
-        wb.save(self.Location_save[:-1] +  kwargs.get("title") + date + extension)
+        wb.save(self.Location_save[:-1] + kwargs.get("title") + date + extension)
 
 
     def search_text(self):

@@ -6,11 +6,11 @@ date = datetime.datetime.now().strftime("%d-%m-%Y")
 
 ######################################################################################################################
 
-excel_path = r"D:\Durai\Scraping\Home_appliances\Save Date's\Final Files\Home_appliances " + date + ".xlsx"
+excel_path = r"E:\Durai\Scraping\Home_appliances\Save Date's\Final Files\Home_appliances " + date + ".xlsx"
 
 ######################################################################################################################
 
-save_path = r"D:\Durai\Scraping\Least_Price\Save Data\Least Home appliances " + date + ".xlsx"
+save_path = r"E:\Durai\Scraping\Least_Price\Save Data\Least Home appliances " + date + ".xlsx"
 
 ######################################################################################################################
 
@@ -20,20 +20,20 @@ ws = wb.active
 save_wb = Workbook()
 save_ws = save_wb.active
 
-save_ws.cell(row=1, column=1).value = "Product id"
-save_ws.cell(row=1, column=2).value = "Item_code"
-save_ws.cell(row=1, column=3).value = "Model Name"
-save_ws.cell(row=1, column=4).value = "Least Price Brand"
-save_ws.cell(row=1, column=5).value = "Least Price"
-save_ws.cell(row=1, column=6).value = "Poorvika price"
-save_ws.cell(row=1, column=7).value = "Sathiya Price"
-save_ws.cell(row=1, column=8).value = "Vasanth & CO Price"
-save_ws.cell(row=1, column=9).value = "Darling price"
-save_ws.cell(row=1, column=10).value = "Vivek's price"
-save_ws.cell(row=1, column=11).value = "Croma price"
-save_ws.cell(row=1, column=12).value = "Amazon price"
-save_ws.cell(row=1, column=13).value = "Flipkart price"
-save_ws.cell(row=1, column=14).value = "Reliance price"
+save_ws["a1"] = "Product id"
+save_ws["b1"] = "Item_code"
+save_ws["c1"] = "Model Name"
+save_ws["d1"] = "Least Price Brand"
+save_ws["e1"] = "Least Price"
+save_ws["f1"] = "Poorvika price"
+save_ws["g1"] = "Sathiya Price"
+# save_ws["a8"] = "Vasanth & CO Price"
+save_ws["h1"] = "Darling price"
+save_ws["i1"] = "Vivek's price"
+save_ws["j1"] = "Croma price"
+save_ws["k1"] = "Amazon price"
+save_ws["l1"] = "Flipkart price"
+save_ws["m1"] = "Reliance price"
 
 flip = 0
 ama = 0
@@ -51,7 +51,6 @@ for r in range(2, ws.max_row + 1):
     # for r in range(2, 10):
     print(r)
     Sathiya_value = 0
-    vasanth_value = 0
     Darling_value = 0
     vivek_value = 0
     croma_value = 0
@@ -66,13 +65,13 @@ for r in range(2, ws.max_row + 1):
     name = ws.cell(row=r, column=3).value
     p_price = int(ws.cell(row=r, column=4).value)
     s_price = ws.cell(row=r, column=5).value
-    va_price = ws.cell(row=r, column=6).value
-    d_price = ws.cell(row=r, column=7).value
-    vi_price = ws.cell(row=r, column=8).value
-    c_price = ws.cell(row=r, column=9).value
-    a_price = ws.cell(row=r, column=10).value
-    f_price = ws.cell(row=r, column=11).value
-    r_price = ws.cell(row=r, column=12).value
+    # va_price = ws.cell(row=r, column=6).value
+    d_price = ws.cell(row=r, column=6).value
+    vi_price = ws.cell(row=r, column=7).value
+    c_price = ws.cell(row=r, column=8).value
+    a_price = ws.cell(row=r, column=9).value
+    f_price = ws.cell(row=r, column=10).value
+    r_price = ws.cell(row=r, column=11).value
 
     save_ws.cell(row=r, column=1).value = p_id
     save_ws.cell(row=r, column=2).value = item_code
@@ -80,15 +79,15 @@ for r in range(2, ws.max_row + 1):
 
     save_ws.cell(row=r, column=6).value = p_price
     save_ws.cell(row=r, column=7).value = s_price
-    save_ws.cell(row=r, column=8).value = va_price
-    save_ws.cell(row=r, column=9).value = d_price
-    save_ws.cell(row=r, column=10).value = vi_price
-    save_ws.cell(row=r, column=11).value = c_price
-    save_ws.cell(row=r, column=12).value = a_price
-    save_ws.cell(row=r, column=13).value = f_price
-    save_ws.cell(row=r, column=14).value = r_price
+    # save_ws.cell(row=r, column=8).value = va_price
+    save_ws.cell(row=r, column=8).value = d_price
+    save_ws.cell(row=r, column=9).value = vi_price
+    save_ws.cell(row=r, column=10).value = c_price
+    save_ws.cell(row=r, column=11).value = a_price
+    save_ws.cell(row=r, column=12).value = f_price
+    save_ws.cell(row=r, column=13).value = r_price
 
-    if s_price == "NA" and va_price == "NA" and d_price == "NA" and vi_price == "NA" and c_price == "NA" and a_price == "NA" and f_price == "NA" and r_price == "NA":
+    if s_price == "NA" and d_price == "NA" and vi_price == "NA" and c_price == "NA" and a_price == "NA" and f_price == "NA" and r_price == "NA":
         # Poorvika
         save_ws.cell(row=r, column=4).value = "Poorvika"
         save_ws.cell(row=r, column=5).value = p_price
@@ -104,11 +103,11 @@ for r in range(2, ws.max_row + 1):
 
 #####################################################################################################################
 
-        "vasanth"
-        if va_price != "NA" and p_price >= va_price:
-            vasanth_value = va_price
-        else:
-            vasanth_value = p_price + 1000
+        # "vasanth"
+        # if va_price != "NA" and p_price >= va_price:
+        #     vasanth_value = va_price
+        # else:
+        #     vasanth_value = p_price + 1000
 
 #############################################################################################################
 
@@ -159,7 +158,7 @@ for r in range(2, ws.max_row + 1):
             Reliance_value = p_price + 1000
 
 #############################################################################################################
-        value = min(Flipkart_value, Amazon_value, croma_value, vasanth_value, Reliance_value,vivek_value,Sathiya_value,Darling_value, p_price)
+        value = min(Flipkart_value, Amazon_value, croma_value, Reliance_value,vivek_value,Sathiya_value,Darling_value, p_price)
 
 
         if value == Sathiya_value:
@@ -167,10 +166,10 @@ for r in range(2, ws.max_row + 1):
             min_value = s_price
             sa = sa+1
 
-        if value == vasanth_value:
-            cell_name = "vasanth"
-            min_value = va_price
-            va = va +1
+        # if value == vasanth_value:
+        #     cell_name = "vasanth"
+        #     min_value = va_price
+        #     va = va +1
 
         if value == Darling_value:
             cell_name = "Darling"
@@ -222,24 +221,24 @@ save_wb[save_ws1]["B2"] = "Brands"
 save_wb[save_ws1]["B3"] = "Flipkart"
 save_wb[save_ws1]["B4"] = "Amazon"
 save_wb[save_ws1]["B5"] = "Croma"
-save_wb[save_ws1]["B6"] = "Vasanth"
-save_wb[save_ws1]["B7"] = "Reliance"
-save_wb[save_ws1]["B8"] = "sathya"
-save_wb[save_ws1]["B9"] = "Viveks"
-save_wb[save_ws1]["B10"] = "Darling"
-save_wb[save_ws1]["B11"] = "Poorvika"
-save_wb[save_ws1]["B12"] = "poorvika Greater then 5%"
+# save_wb[save_ws1]["B6"] = "Vasanth"
+save_wb[save_ws1]["B6"] = "Reliance"
+save_wb[save_ws1]["B7"] = "sathya"
+save_wb[save_ws1]["B8"] = "Viveks"
+save_wb[save_ws1]["B9"] = "Darling"
+save_wb[save_ws1]["B10"] = "Poorvika"
+save_wb[save_ws1]["B11"] = "poorvika Greater then 5%"
 
 save_wb[save_ws1]["c2"] = "Totals"
 save_wb[save_ws1]["c3"] = flip
 save_wb[save_ws1]["c4"] = ama
 save_wb[save_ws1]["c5"] = cro
-save_wb[save_ws1]["c6"] = va
-save_wb[save_ws1]["c7"] = rel
-save_wb[save_ws1]["c8"] = sa
-save_wb[save_ws1]["c9"] = vi
-save_wb[save_ws1]["c10"] = da
-save_wb[save_ws1]["c11"] = poor
-save_wb[save_ws1]["c12"] = less
+# save_wb[save_ws1]["c6"] = va
+save_wb[save_ws1]["c6"] = rel
+save_wb[save_ws1]["c7"] = sa
+save_wb[save_ws1]["c8"] = vi
+save_wb[save_ws1]["c90"] = da
+save_wb[save_ws1]["c10"] = poor
+save_wb[save_ws1]["c11"] = less
 
 save_wb.save(save_path)

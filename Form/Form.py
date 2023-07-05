@@ -31,7 +31,7 @@ class Model:
 
     def product_page(self):
 
-        for box in driver.find_elements(By.CLASS_NAME, "product-card_card__description__2LoI_"):
+        for box in driver.find_elements(By.CLASS_NAME, "product-cardlist_card__description__4m5gI"):
             name = box.find_element(By.TAG_NAME, "b").text
             price = box.find_element(By.CLASS_NAME, "whitespace-nowrap").text
             link = box.find_element(By.TAG_NAME, "a").get_attribute("href")
@@ -55,34 +55,44 @@ class Model:
         page = ""
 
         if kwargs.get('head') == "Mobile & Accessories":
-            page = 25
+            page = 23
+            # page = 2
 
         elif kwargs.get('head') == "Computer & Laptop Accessories":
-            page = 7
+            page = 6
+            # page = 2
 
         elif kwargs.get('head') == "Tab & Ipad Accessories":
-            page = 3
+            page = 5
+            # page = 2
 
-        elif kwargs.get('head') == "TV & Audio Accessories":
+        elif kwargs.get('head') == "Audio Accessories":
             page = 10
+            # page = 2
 
         elif kwargs.get('head') == "Smart Technology":
-            page = 5
+            page = 10
+            # page = 2
 
         elif kwargs.get('head') == "Laptops":
-            page = 5
+            page = 10
+            # page = 2
 
         elif kwargs.get('head') == "Tablets":
-            page = 5
+            page = 10
+            # page = 2
 
         elif kwargs.get('head') == "Mobiles":
-            page = 20
+            page = 30
+            # page = 2
 
         elif kwargs.get('head') == "Tv":
             page = 5
+            # page = 2
 
         elif kwargs.get('head') == "Kitchen Appliances":
             page = 20
+            # page = 2
 
         self.product(page=page)
 
@@ -110,7 +120,7 @@ class Model:
 
             driver.get(self.url)
 
-            for box in driver.find_elements(By.CLASS_NAME, "product-card_card__description__2LoI_"):
+            for box in driver.find_elements(By.CLASS_NAME, "product-cardlist_card__description__4m5gI"):
                 name = box.find_element(By.TAG_NAME, "b").text
                 price = box.find_element(By.CLASS_NAME, "whitespace-nowrap").text
                 link = box.find_element(By.TAG_NAME, "a").get_attribute("href")

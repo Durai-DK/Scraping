@@ -13,7 +13,7 @@ driver = webdriver.Chrome(service=s)
 new_wb = Workbook()
 new_ws = new_wb.active
 
-wb = load_workbook(r"D:/Mohi/Scraping/Reviews_count/Urls/Google Ratings & Reviews Urls.xlsx")
+wb = load_workbook(r"E:\Durai\Scraping/Reviews_count/Urls/Google Ratings & Reviews Urls.xlsx")
 ws = wb.active
 
 new_ws.cell(row=1,column=1).value = "APX"
@@ -23,8 +23,7 @@ new_ws.cell(row=1,column=4).value = "Reviews"
 
 
 class GoogleRating:
-    def __init__(self,row_num):
-
+    def __init__(self, row_num):
         self.row_num = row_num
 
     def Scrap(self):

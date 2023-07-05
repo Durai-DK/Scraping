@@ -1,14 +1,18 @@
 from selenium import webdriver
 from openpyxl import Workbook, load_workbook
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 import time
 import datetime
+date = datetime.date.today().strftime("%#d-%#m-%Y")
+print(date)
+
 ac_wb = load_workbook(r"D:\Durai\Scraping\Home_appliances\Web Url\Urls.xlsx")
 ac_ws = ac_wb.active
 print("No Of Rows",ac_ws.max_row)
-print("No Of Columns",ac_ws.max_column)
+
 # print(ac_ws.value)
-date = datetime.date.today().strftime("%#d-%#m-%Y")
+date = datetime.date.today().strftime("%d-%m-%Y")
 
 options = webdriver.ChromeOptions()
 
@@ -42,7 +46,6 @@ save_ws.cell(row=1, column=4).value = "Poorvika"
 save_ws.cell(row=1, column=5).value = "Darling Price"
 save_ws.cell(row=1, column=6).value = "Darling Url"
 
-
 for r in range(2, ac_ws.max_row+1):
 # for r in range(2, 101):
     save_ws.cell(row=r, column=1).value = ac_ws.cell(row=r, column=1).value
@@ -59,13 +62,17 @@ for r in range(2, ac_ws.max_row+1):
             driver.get(url=ac_ws.cell(row=r, column=6).value)
             # driver.implicitly_wait(5)
             time.sleep(2)
+
             try:
                 for title in driver.find_elements(By.CLASS_NAME, "product-form__info-list"):
                     price = title.find_element(By.CLASS_NAME, "price--highlight")
                     print("Darling Price 1 = ", price.text[14:])
                     save_ws.cell(row=r, column=5).value = price.text[14:]
-            except:
-                pass
+            except NoSuchElementException:
+                for title in driver.find_elements(By.CLASS_NAME, "product-form__info-list"):
+                    price = title.find_element(By.CLASS_NAME, "guitdyf")
+                    print("Darling Price 1 = ", price.text[14:])
+                    save_ws.cell(row=r, column=5).value = price.text[14:]
         except:
             pass
 
